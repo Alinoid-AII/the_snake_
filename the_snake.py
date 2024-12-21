@@ -128,7 +128,6 @@ def main():
     pygame.init()
     snake = Snake()
     apple = Apple()
-11:35
 
 
 while True:
