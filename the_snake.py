@@ -1,4 +1,5 @@
 import pygame
+from random import randint, choice
 
 # Константы для размеров экрана и сетки
 SCREEN_WIDTH = 640
@@ -27,7 +28,6 @@ screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT), 0, 32)
 pygame.display.set_caption("Snake Game")
 clock = pygame.time.Clock()
 
-
 class GameObject:
     """Базовый класс для всех игровых объектов."""
 
@@ -38,7 +38,6 @@ class GameObject:
     def draw(self, screen):
         """Отрисовать игровой объект на экране."""
         pass
-
 
 class Apple(GameObject):
     """Класс, представляющий яблоко, которое может съесть змея."""
@@ -60,7 +59,6 @@ class Apple(GameObject):
         rect = pygame.Rect(self.position, (GRID_SIZE, GRID_SIZE))
         pygame.draw.rect(screen, self.body_color, rect)
         pygame.draw.rect(screen, BORDER_COLOR, rect, 1)
-
 
 class Snake(GameObject):
     """Класс, представляющий змею."""
@@ -109,7 +107,6 @@ class Snake(GameObject):
         self.positions = [(SCREEN_WIDTH // 2, SCREEN_HEIGHT // 2)]
         self.direction = choice([UP, DOWN, LEFT, RIGHT])
 
-
 def handle_keys(snake):
     """Обработать нажатия клавиш для движения змеи."""
     for event in pygame.event.get():
@@ -126,14 +123,15 @@ def handle_keys(snake):
             elif event.key == pygame.K_RIGHT and snake.direction != LEFT:
                 snake.next_direction = RIGHT
 
-
 def main():
     """Основная функция для запуска игры."""
     pygame.init()
     snake = Snake()
     apple = Apple()
+11:35
 
-    while True:
+
+while True:
         clock.tick(SPEED)
         handle_keys(snake)
         snake.update_direction()
@@ -148,7 +146,6 @@ def main():
         apple.draw(screen)
 
         pygame.display.update()
-
 
 if __name__ == "__main__":
     main()
