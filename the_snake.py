@@ -1,4 +1,3 @@
-from random import choice, randint
 import pygame
 
 # Константы для размеров экрана и сетки
